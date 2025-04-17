@@ -40,11 +40,11 @@ jobs:
     # Update the VM with secure token passing
     - name: Azure VM Update
       run: |
-    az vm extension set \
-      --resource-group ${{ secrets.RESOURCE_GROUP }} \
-      --vm-name ${{ secrets.VM_NAME }} \
-      --name CustomScript \
-      --force-update \
-      --publisher Microsoft.Azure.Extensions \
-      --settings '{}' \
-      --protected-settings '{"commandToExecute": "cd /home/azureuser && git clone -b main https://github.com/AreejOSM/Chatbot-project.git || cd Chatbot-project && git pull origin main && bash /home/azureuser/Chatbot-project/update_app.sh"}'
+        az vm extension set \
+          --resource-group ${{ secrets.RESOURCE_GROUP }} \
+          --vm-name ${{ secrets.VM_NAME }} \
+          --name CustomScript \
+          --force-update \
+          --publisher Microsoft.Azure.Extensions \
+          --settings '{}' \
+          --protected-settings '{"commandToExecute": "cd /home/azureuser && git clone -b main https://github.com/AreejOSM/Chatbot-project.git || cd Chatbot-project && git pull origin main && bash /home/azureuser/Chatbot-project/update_app.sh"}'
